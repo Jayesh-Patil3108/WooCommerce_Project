@@ -1,0 +1,151 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "SaaS.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "SaaS.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SaaS.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SaaS.Application.dll": {}
+        }
+      },
+      "SaaS.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/SaaS.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SaaS.Domain.dll": {}
+        }
+      },
+      "SaaS.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "SaaS.Application": "1.0.0",
+          "SaaS.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SaaS.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SaaS.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SaaS.Application/1.0.0": {
+      "type": "project",
+      "path": "../SaaS.Application/SaaS.Application.csproj",
+      "msbuildProject": "../SaaS.Application/SaaS.Application.csproj"
+    },
+    "SaaS.Domain/1.0.0": {
+      "type": "project",
+      "path": "../SaaS.Domain/SaaS.Domain.csproj",
+      "msbuildProject": "../SaaS.Domain/SaaS.Domain.csproj"
+    },
+    "SaaS.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../SaaS.Infrastructure/SaaS.Infrastructure.csproj",
+      "msbuildProject": "../SaaS.Infrastructure/SaaS.Infrastructure.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "SaaS.Application >= 1.0.0",
+      "SaaS.Domain >= 1.0.0",
+      "SaaS.Infrastructure >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\jk\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\jk\\Desktop\\JayeshProject\\SaaSWhatsApp\\SaaS.WhatsApp.WooCommerce\\SaaS.Web\\SaaS.Web.csproj",
+      "projectName": "SaaS.Web",
+      "projectPath": "C:\\Users\\jk\\Desktop\\JayeshProject\\SaaSWhatsApp\\SaaS.WhatsApp.WooCommerce\\SaaS.Web\\SaaS.Web.csproj",
+      "packagesPath": "C:\\Users\\jk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jk\\Desktop\\JayeshProject\\SaaSWhatsApp\\SaaS.WhatsApp.WooCommerce\\SaaS.Web\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\jk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\Users\\jk\\Desktop\\JayeshProject\\SaaSWhatsApp\\SaaS.WhatsApp.WooCommerce\\SaaS.Application\\SaaS.Application.csproj": {
+              "projectPath": "C:\\Users\\jk\\Desktop\\JayeshProject\\SaaSWhatsApp\\SaaS.WhatsApp.WooCommerce\\SaaS.Application\\SaaS.Application.csproj"
+            },
+            "C:\\Users\\jk\\Desktop\\JayeshProject\\SaaSWhatsApp\\SaaS.WhatsApp.WooCommerce\\SaaS.Domain\\SaaS.Domain.csproj": {
+              "projectPath": "C:\\Users\\jk\\Desktop\\JayeshProject\\SaaSWhatsApp\\SaaS.WhatsApp.WooCommerce\\SaaS.Domain\\SaaS.Domain.csproj"
+            },
+            "C:\\Users\\jk\\Desktop\\JayeshProject\\SaaSWhatsApp\\SaaS.WhatsApp.WooCommerce\\SaaS.Infrastructure\\SaaS.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\jk\\Desktop\\JayeshProject\\SaaSWhatsApp\\SaaS.WhatsApp.WooCommerce\\SaaS.Infrastructure\\SaaS.Infrastructure.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
