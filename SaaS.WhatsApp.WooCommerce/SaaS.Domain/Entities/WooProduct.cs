@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SaaS.Domain.Entities
 {
@@ -25,6 +20,6 @@ namespace SaaS.Domain.Entities
         [Required]
         public decimal Price { get; set; }
 
-        public virtual Client Client { get; set; }
+        public virtual Client? Client { get; set; }
     }
 }

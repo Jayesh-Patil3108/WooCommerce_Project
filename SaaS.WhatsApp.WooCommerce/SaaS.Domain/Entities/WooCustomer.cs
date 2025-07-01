@@ -24,6 +24,6 @@ namespace SaaS.Domain.Entities
         [Required]
         public string Phone { get; set; }
 
-        public virtual Client Client { get; set; }
+        public virtual Client? Client { get; set; }
     }
 }

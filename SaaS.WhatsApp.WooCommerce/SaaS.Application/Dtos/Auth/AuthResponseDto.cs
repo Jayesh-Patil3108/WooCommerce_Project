@@ -8,8 +8,8 @@ namespace SaaS.Application.Dtos.Auth
 {
     public class AuthResponseDto
     {
-        public string Token { get; set; } = string.Empty;
-        public string Role { get; set; } = string.Empty;
-        public int ClientId { get; set; }
+        public string? Token { get; set; }
+        public string? Role { get; set; }
+        public int? ClientId { get; set; }
     }
 }

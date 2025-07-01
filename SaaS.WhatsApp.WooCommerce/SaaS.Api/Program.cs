@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Paket;
+using SaaS.Application.IServices.Auth;
 using SaaS.Infrastructure.DbContexts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +13,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<SaaSDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+     sqlOptions => sqlOptions.MigrationsAssembly("SaaS.Infrastructure")
+));
+
+builder.Services.AddScoped<IAuthService, SaaS.Application.Services.Auth.AuthService>();
 
 
 var app = builder.Build();
