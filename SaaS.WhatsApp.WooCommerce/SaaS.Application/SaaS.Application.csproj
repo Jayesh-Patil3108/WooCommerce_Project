@@ -15,4 +15,9 @@
     <ProjectReference Include="..\SaaS.Infrastructure\SaaS.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IServices\IWhatsAppService\" />
+    <Folder Include="Services\WhatsAppService\" />
+  </ItemGroup>
+
 </Project>

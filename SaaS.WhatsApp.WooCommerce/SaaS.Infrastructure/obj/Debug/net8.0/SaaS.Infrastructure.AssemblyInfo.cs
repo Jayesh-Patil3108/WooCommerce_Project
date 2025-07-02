@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SaaS.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86a6c5c4d077a8a2ea1118f2ed4140a0b98204c3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7833ebf2299bc9ea1df07f01962c4003e6c5038e")]
 [assembly: System.Reflection.AssemblyProductAttribute("SaaS.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SaaS.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
