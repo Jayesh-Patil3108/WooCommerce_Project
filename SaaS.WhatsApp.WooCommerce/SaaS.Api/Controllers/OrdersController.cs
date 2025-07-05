@@ -23,7 +23,7 @@ namespace SaaS.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetOrders()
         {
-            if (!int.TryParse(HttpContext.Items["ClientId"]?.ToString(), out int clientId))
+            if (!int.TryParse(User.FindFirst("clientId")?.Value, out int clientId))
             {
                 return Unauthorized("Client ID not found in context.");
             }

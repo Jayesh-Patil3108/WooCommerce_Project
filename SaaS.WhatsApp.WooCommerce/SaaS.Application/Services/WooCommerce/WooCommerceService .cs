@@ -5,6 +5,7 @@ using SaaS.Infrastructure.DbContexts;
 using SaaS.Domain.Entities;
 using SaaS.Application.Dtos.WooCommerce;
 using System.Text.Json;
+using static System.Net.WebRequestMethods;
 
 namespace SaaS.Application.Services.WooCommerce
 {
@@ -17,6 +18,7 @@ namespace SaaS.Application.Services.WooCommerce
             _httpClient = httpClient;
             _context = context;
         }
+
         public async Task<List<WooOrder>> GetOrdersAsync(int clientId)
         {
             var wooSetting = await _context.ClientWooSettings
@@ -24,6 +26,7 @@ namespace SaaS.Application.Services.WooCommerce
             if (wooSetting == null) throw new Exception("WooCommerce settings not found.");
 
             var url = $"{wooSetting.StoreUrl}/wp-json/wc/v3/orders?consumer_key={wooSetting.ConsumerKey}&consumer_secret={wooSetting.ConsumerSecret}";
+
             var response = await _httpClient.GetAsync(url);
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
@@ -36,12 +39,15 @@ namespace SaaS.Application.Services.WooCommerce
                 OrderNumber = o.Number,
                 OrderDate = o.DateCreated,
                 TotalAmount = decimal.Parse(o.Total),
-                CustomerName = $"{o.BBilling.FirstName} {o.BBilling.LastName}",
-                CustomerPhone = o.BBilling.Phone
+                CustomerName = $"{o.Billing.FirstName} {o.Billing.LastName}",
+                CustomerPhone = o.Billing.Phone
             }).ToList();
 
             return orders;
         }
+
+
+
 
         public async Task<List<WooCustomer>> GetCustomersAsync(int clientId)
         {

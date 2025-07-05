@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +56,7 @@ builder.Services.AddDbContext<SaaSDbContext>(options =>
      sqlOptions => sqlOptions.MigrationsAssembly("SaaS.Infrastructure")
 ));
 
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 // Configure JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -119,11 +121,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
+app.UseAuthorization();
+
 
 // Temporarily comment out TenantFilterMiddleware
-//app.UseMiddleware<TenantFilterMiddleware>(); 
+app.UseMiddleware<TenantFilterMiddleware>();
 
-app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

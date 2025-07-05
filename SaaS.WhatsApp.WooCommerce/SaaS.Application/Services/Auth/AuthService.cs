@@ -74,7 +74,7 @@ namespace SaaS.Application.Services.Auth
 
             return new AuthResponseDto
             {
-                Token = tokenString,
+                Token = "Bearer " + tokenString,
                 Role = client.Role,
                 ClientId = client.ClientId
             };

@@ -13,7 +13,7 @@ namespace SaaS.Application.Dtos.WooCommerce
         public string Number { get; set; }
         public DateTime DateCreated { get; set; }
         public string Total { get; set; }
-        public WooCommerceBillingDto BBilling { get; set; }
+        public WooCommerceBillingDto Billing { get; set; }
     }
 
     public class WooCommerceBillingDto

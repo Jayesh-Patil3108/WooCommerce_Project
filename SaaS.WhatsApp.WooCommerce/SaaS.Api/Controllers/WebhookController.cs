@@ -66,8 +66,8 @@ namespace SaaS.Api.Controllers
                 OrderNumber = order.Number,
                 OrderDate = order.DateCreated,
                 TotalAmount = decimal.Parse(order.Total),
-                CustomerName = $"{order.BBilling?.FirstName} {order.BBilling?.LastName}".Trim(),
-                CustomerPhone = order.BBilling?.Phone
+                CustomerName = $"{order.Billing?.FirstName} {order.Billing?.LastName}".Trim(),
+                CustomerPhone = order.Billing?.Phone
             };
 
             // Validate required fields
