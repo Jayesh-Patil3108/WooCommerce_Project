@@ -64,7 +64,7 @@ namespace SaaS.Application.Services.Auth
                     new Claim("clientId", client.ClientId.ToString()),
                     new Claim(ClaimTypes.Role, client.Role)
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(5),
+                Expires = DateTime.UtcNow.AddMinutes(15),
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"],
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -95,7 +95,7 @@ namespace SaaS.Application.Services.Auth
 
         public async Task<AuthResponseDto> RefreshTokenAsync(string refreshToken)
         {
-            var StoreToken = await _context.RefreshTokens.FirstOrDefaultAsync(rt => rt.Token == refreshToken && !rt.IsRevoked && rt.ExpiryDate > DateTime.UtcNow).ConfigureAwait(false);
+            var StoreToken = await _context.RefreshTokens.FirstOrDefaultAsync(rt => rt.Token == refreshToken && rt.RevokedDate == null && rt.ExpiryDate > DateTime.UtcNow).ConfigureAwait(false);
             if (StoreToken == null)
                 throw new SecurityTokenException("Invalid or expired refresh token.");
 

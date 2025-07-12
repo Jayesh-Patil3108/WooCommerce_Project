@@ -13,4 +13,9 @@ namespace SaaS.Application.Dtos.Auth
         public string Email { get; set; }
         public string Password { get; set; }
     }
+
+    public class RefreshTokenRequestDto
+    {
+        public string RefreshToken { get; set; }
+    }
 }

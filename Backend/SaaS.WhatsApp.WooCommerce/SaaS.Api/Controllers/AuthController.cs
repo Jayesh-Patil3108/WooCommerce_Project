@@ -48,6 +48,23 @@ namespace SaaS.Api.Controllers
             {
                 return BadRequest(ex.Message);
             }
-        }  
+        }
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequestDto refreshTokenRequest)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(refreshTokenRequest.RefreshToken))
+                    return BadRequest("Refresh token is required.");
+
+                var response = await _authService.RefreshTokenAsync(refreshTokenRequest.RefreshToken);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

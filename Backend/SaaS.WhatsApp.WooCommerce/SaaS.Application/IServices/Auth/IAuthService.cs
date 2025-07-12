@@ -6,5 +6,6 @@ namespace SaaS.Application.IServices.Auth
     {
         Task<AuthResponseDto> LoginAsync(LoginDto loginDto);
         Task<RegisterResponseDto> RegisterAsync(RegisterDto registerDto);
+        Task<AuthResponseDto> RefreshTokenAsync(string refreshToken);
     }
 }
