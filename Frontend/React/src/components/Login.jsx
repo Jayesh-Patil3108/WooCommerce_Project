@@ -1,9 +1,9 @@
 
 // Login.jsx
 
-// src/components/Login.jsx
 import React, { useState } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import { Link } from 'react-router-dom'; // 👈 import Link
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,9 +12,15 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const responce = await axios.post(`${process.env.REACT_APP_BACKEND_URL}`, {
-        email, password
-    })
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
+        email,
+        password,
+      });
+      console.log('Login success:', response.data);
+    } catch (error) {
+      console.error('Login failed:', error.response?.data || error.message);
+    }
   };
 
   return (
@@ -57,9 +63,18 @@ const Login = () => {
             Log In
           </button>
         </form>
+
+        {/* 🔗 Register link */}
+        <p className="text-sm text-center text-gray-600">
+          Don't have an account?{' '}
+          <Link to="/user-register" className="text-blue-600 hover:underline">
+            Register here
+          </Link>
+        </p>
       </div>
     </div>
   );
 };
 
 export default Login;
+
