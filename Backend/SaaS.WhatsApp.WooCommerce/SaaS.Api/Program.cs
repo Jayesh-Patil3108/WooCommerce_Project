@@ -124,6 +124,8 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+//app.UseTokenRefreshMiddleware();
+
 
 // Temporarily comment out TenantFilterMiddleware
 app.UseMiddleware<TenantFilterMiddleware>();

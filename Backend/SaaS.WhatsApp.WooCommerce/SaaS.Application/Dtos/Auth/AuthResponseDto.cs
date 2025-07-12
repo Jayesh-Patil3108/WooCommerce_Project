@@ -12,5 +12,6 @@ namespace SaaS.Application.Dtos.Auth
         public string? Role { get; set; }
         public int? ClientId { get; set; }
         public string? RefreshToken { get; set; }
+        public DateTime? ExpiresAt { get; set; }
     }
 }
