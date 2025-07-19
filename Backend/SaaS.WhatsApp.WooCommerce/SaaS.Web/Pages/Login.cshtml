@@ -1,0 +1,72 @@
+﻿@page
+@model SaaS.Web.Pages.LoginModel
+@{
+	ViewData["Title"] = "Login";
+}
+<html>
+<head>
+	<link rel="stylesheet" href="~/css/login.css" />
+	<style>
+		.validation-error {
+			display: block;
+			padding: 8px 12px;
+			margin-top: 5px;
+			color: #ff4d4d;
+			background-color: #ff4d4d1a;
+			border-radius: 5px;
+			backdrop-filter: blur(10px);
+			font-size: 14px;
+			font-weight: 500;
+			letter-spacing: 0.5px;
+			opacity: 0.8;
+			transition: opacity 0.3s ease;
+		}
+
+			.validation-error.hidden {
+				display: none;
+			}
+
+		.input-container {
+			position: relative;
+			margin-bottom: 1rem;
+		}
+	</style>
+</head>
+
+<body>
+	<section class="container">
+		<div class="login-container">
+			<div class="circle circle-one"></div>
+			<div class="form-container">
+				<img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
+				<h1 class="opacity">Login</h1>
+				<form method="post" asp-antiforgery="true" id="loginForm">
+					@Html.AntiForgeryToken()
+					<div class="input-container">
+						<input name="LoginDto.Email" type="text" id="emailInput" placeholder="USERNAME" />
+						<span id="emailError" class="validation-error hidden"></span>
+					</div>
+					<div class="input-container">
+						<input name="LoginDto.Password" type="password" id="passwordInput" placeholder="PASSWORD" />
+						<span id="passwordError" class="validation-error hidden"></span>
+					</div>
+					<button type="submit" class="opacity">SUBMIT</button>
+				</form>
+				<div class="register-forget opacity">
+					<a href="">REGISTER</a>
+					<a href="">FORGOT PASSWORD</a>
+				</div>
+				@if (!string.IsNullOrEmpty(Model.Message))
+				{
+					<p style="color: red;">@Model.Message</p>
+				}
+			</div>
+			<div class="circle circle-two"></div>
+		</div>
+		<div class="theme-btn-container"></div>
+	</section>
+	<script src="~/js/login.js" asp-append-version="true"></script>
+</body>
+</html>
+
+

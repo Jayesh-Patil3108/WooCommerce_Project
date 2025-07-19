@@ -89,7 +89,8 @@ namespace SaaS.Application.Services.Auth
                 Token = "Bearer " + tokenString,
                 Role = client.Role,
                 ClientId = client.ClientId,
-                RefreshToken = refreshToken.Token
+                RefreshToken = refreshToken.Token,
+                ExpiresAt = refreshToken.ExpiryDate,
             };
         }
 
