@@ -147,10 +147,12 @@
     margin-right: 10px;
 }
 .sidebar .logo img {
-    width: 78px;
-    padding: 0px;
+    width: 218px;
     border-radius: 20px;
-    height: auto;
+    height: 84px;
+    display: block;
+    margin-bottom: 2rem;
+    object-fit: cover;
     display: block;
     margin-bottom: 2rem;
 }
