@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"] - SaaS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/Common.css">
+    <link rel="stylesheet" href="/css/@ViewData["PageStyle"]">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="~/images/logo.png" alt="Logo" />
+            </div>
+            <nav>
+                <ul>
+                    <li class="@(ViewData["ActivePage"] == "OrderDashboard" ? "active" : "")"><i class="fas fa-chart-line"></i> <a asp-page="/OrderDashboard">OrderDashboard</a></li>
+                    <li class="@(ViewData["ActivePage"] == "Products" ? "active" : "")"><i class="fas fa-box-open"></i> <a asp-page="/Products">Products</a></li>
+                    <li class="@(ViewData["ActivePage"] == "Customers" ? "active" : "")"><i class="fas fa-users"></i> <a asp-page="/Customers">Customers</a></li>
+                    <li class="@(ViewData["ActivePage"] == "Reports" ? "active" : "")"><i class="fas fa-file-alt"></i> <a asp-page="/Reports">Reports</a></li>
+                    <li class="@(ViewData["ActivePage"] == "WhatsAppInbox" ? "active" : "")"><i class="fas fa-comments"></i> <a asp-page="/Inbox">WhatsApp Inbox</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="/js/@ViewData["PageScript"]"></script>
+</body>
+</html>

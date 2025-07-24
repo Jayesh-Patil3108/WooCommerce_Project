@@ -1,94 +1,74 @@
 ﻿@page
 @model SaaS.Web.Pages.OrdersModel
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Orders Dashboard";
-}
-<html>
-<head>
-    <title>Orders Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/orders.css">
-</head>
-<body>
-    <div class="dashboard-wrapper">
-        <aside class="sidebar">
-            <div class="logo">
-                <img src="~/images/logo.png" alt="Logo" />
-            </div>
-            <nav>
-                <ul>
-                    <li class="active"><i class="fas fa-chart-line"></i> Dashboard</li>
-                    <li><i class="fas fa-shopping-cart"></i> Orders</li>
-                    <li><i class="fas fa-box-open"></i> Products</li>
-                    <li><i class="fas fa-users"></i> Customers</li>
-                    <li><i class="fas fa-file-alt"></i> Reports</li>
-                </ul>
-            </nav>
-        </aside>
+	<script src="/js/orders.js"></script>
+}
 
-        <main class="main-content">
-            <header class="topbar">
-                <h2>Orders Dashboard</h2>
-                <div class="user-info">
-                    <input type="text" placeholder="Search orders..." />
-                 @*    <img src="/images/user.jpg" alt="User" /> *@
-                </div>
-            </header>
-
-            <section class="cards">
-                <div class="card blue">
-                    <p>Total Orders</p>
-                    <h3>@(Model.TotalOrders ?? 0)</h3>
-                </div>
-                <div class="card green">
-                    <p>Total Amount</p>
-                    <h3>@(Model.TotalAmount?.ToString("C") ?? "N/A")</h3>
-                </div>
-                <div class="card orange">
-                    <p>Pending Orders</p>
-                    <h3>@(Model.PendingOrders ?? 0)</h3>
-                </div>
-            </section>
-
-            @if (Model.Orders == null)
-            {
-                <p>Loading...</p>
-            }
-            else if (!Model.Orders.Any())
-            {
-                <p>No orders found.</p>
-            }
-            else
-            {
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Order Number</th>
-                            <th>Total Amount</th>
-                            <th>Order Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var order in Model.Orders)
-                        {
-                            <tr>
-                                <td>@order.Id</td>
-                                <td>@order.OrderNumber</td>
-                                <td>@order.TotalAmount.ToString("C")</td>
-                                <td>@order.OrderDate.ToString("dd/MM/yyyy")</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-
-            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
-            {
-                <p class="error-message">@Model.ErrorMessage</p>
-            }
-        </main>
+<header class="topbar">
+    <h2>Orders Dashboard - @Model.ClientName</h2>
+    <div class="user-info">
+        <input type="text" id="searchInput" placeholder="Search orders..." />
     </div>
-    <script src="/js/orders.js"></script>
-</body>
-</html>
+</header>
+
+<section class="cards">
+    <div class="card blue">
+        <p>Total Orders</p>
+        <h3>@(Model.TotalOrders ?? 0)</h3>
+    </div>
+    <div class="card green">
+        <p>Total Amount</p>
+        <h3>@(Model.TotalAmount?.ToString("C") ?? "N/A")</h3>
+    </div>
+    <div class="card orange">
+        <p>Pending Orders</p>
+        <h3>@(Model.PendingOrders ?? 0)</h3>
+    </div>
+</section>
+
+@if (Model.Orders == null)
+{
+    <p>Loading...</p>
+}
+else if (!Model.Orders.Any())
+{
+    <p>No orders found.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Number</th>
+                <th>Total Amount</th>
+                <th>Order Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="ordersTableBody">
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.OrderNumber</td>
+                    <td>@order.TotalAmount.ToString("C")</td>
+                    <td>@order.OrderDate.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <span class="badge @(order.Status == "Pending" ? "pending" : "completed")">
+                            @order.Status
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p class="error-message">@Model.ErrorMessage</p>
+}

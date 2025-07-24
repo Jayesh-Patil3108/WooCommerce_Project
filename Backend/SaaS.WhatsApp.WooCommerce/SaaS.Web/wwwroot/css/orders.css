@@ -1,159 +1,220 @@
-﻿ :root {
-        --sidebar-bg: #1e1e2f;
-        --main-bg: #f5f6fa;
-        --text-dark: #2d2d2d;
-        --card-blue: #00cfe8;
-        --card-green: #28c76f;
-        --card-orange: #ff9f43;
-        --white: #ffffff;
+﻿:root {
+    --sidebar-bg: #1e1e2f;
+    --main-bg: #f5f6fa;
+    --text-dark: #2d2d2d;
+    --card-blue: #00cfe8;
+    --card-green: #28c76f;
+    --card-orange: #ff9f43;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--main-bg);
+    color: var(--text-dark);
+}
+
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 250px;
+    background: var(--sidebar-bg);
+    color: var(--white);
+    height: 100vh;
+    padding: 2rem 1rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+    .sidebar .logo img {
+        width: 218px;
+        border-radius: 20px;
+        height: 84px;
+        margin-bottom: 2rem;
+        object-fit: cover;
     }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
+    .sidebar nav ul {
+        list-style: none;
     }
 
-    body {
-        background: var(--main-bg);
-        color: var(--text-dark);
+        .sidebar nav ul li {
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+            .sidebar nav ul li.active,
+            .sidebar nav ul li:hover {
+                background-color: #33334d;
+                border-radius: 6px;
+            }
+
+            .sidebar nav ul li i {
+                margin-right: 10px;
+                transition: color 0.2s;
+            }
+
+            .sidebar nav ul li.active i,
+            .sidebar nav ul li:hover i {
+                color: var(--card-blue);
+            }
+
+.main-content {
+    margin-left: 250px;
+    padding: 2rem;
+    width: calc(100% - 250px);
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+    .user-info input {
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        width: 200px;
     }
 
+.cards {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card.blue {
+        background: var(--card-blue);
+        color: white;
+    }
+
+    .card.green {
+        background: var(--card-green);
+        color: white;
+    }
+
+    .card.orange {
+        background: var(--card-orange);
+        color: white;
+    }
+
+    .card h3 {
+        font-size: 1.8rem;
+        margin-top: 0.5rem;
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+th,
+td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f0f0f0;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+.badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    display: inline-block;
+}
+
+    .badge.pending {
+        background-color: var(--card-orange);
+    }
+
+    .badge.completed {
+        background-color: var(--card-green);
+    }
+
+.error-message {
+    color: red;
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
     .dashboard-wrapper {
-        display: flex;
+        flex-direction: column;
     }
 
     .sidebar {
-        width: 250px;
-        background: var(--sidebar-bg);
-        color: var(--white);
-        height: 100vh;
-        padding: 2rem 1rem;
-        position: fixed;
-        left: 0;
-        top: 0;
+        width: 100%;
+        height: auto;
+        position: relative;
     }
 
-        .sidebar .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-        }
-
-        .sidebar nav ul {
-            list-style: none;
-        }
-
-            .sidebar nav ul li {
-                padding: 0.8rem 1rem;
-                cursor: pointer;
-            }
-
-                .sidebar nav ul li.active, .sidebar nav ul li:hover {
-                    background-color: #33334d;
-                    border-radius: 6px;
-                }
-
     .main-content {
-        margin-left: 250px;
-        padding: 2rem;
+        margin-left: 0;
         width: 100%;
+    }
+
+    .cards {
+        flex-direction: column;
     }
 
     .topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-    }
-
-        .topbar input {
-            padding: 0.5rem;
-            width: 250px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
-
-        .topbar img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-    .cards {
-        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         gap: 1rem;
-        margin-bottom: 2rem;
     }
 
-    .card {
-        flex: 1;
-        background-color: var(--white);
-        padding: 1.5rem;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-        .card.blue {
-            background: var(--card-blue);
-            color: white;
-        }
-
-        .card.green {
-            background: var(--card-green);
-            color: white;
-        }
-
-        .card.orange {
-            background: var(--card-orange);
-            color: white;
-        }
-
-        .card h3 {
-            font-size: 1.8rem;
-            margin-top: 0.5rem;
-        }
-
-    table {
+    .user-info input {
         width: 100%;
-        border-collapse: collapse;
-        background-color: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
-
-    th, td {
-        padding: 1rem;
-        text-align: left;
-        border-bottom: 1px solid #eee;
-    }
-
-    th {
-        background-color: #f0f0f0;
-    }
-
-    tr:hover {
-        background-color: #f9f9f9;
-    }
-
-    .error-message {
-        color: red;
-        margin-top: 1rem;
-    }
-
-    .sidebar nav ul li i {
-    margin-right: 10px;
 }
-.sidebar .logo img {
-    width: 218px;
-    border-radius: 20px;
-    height: 84px;
-    display: block;
-    margin-bottom: 2rem;
-    object-fit: cover;
-    display: block;
-    margin-bottom: 2rem;
-}
-

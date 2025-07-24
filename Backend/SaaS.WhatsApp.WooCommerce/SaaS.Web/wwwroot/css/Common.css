@@ -1,0 +1,53 @@
+﻿:root {
+    --sidebar-bg: #1e1e2f;
+    --card-blue: #00cfe8;
+    --white: #ffffff;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background: var(--sidebar-bg);
+    color: var(--white);
+    height: 100vh;
+    padding: 2rem 1rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+    .sidebar .logo img {
+        width: 218px;
+        border-radius: 20px;
+        height: 84px;
+        margin-bottom: 2rem;
+        object-fit: cover;
+    }
+
+    .sidebar nav ul {
+        list-style: none;
+    }
+
+        .sidebar nav ul li {
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+            .sidebar nav ul li.active,
+            .sidebar nav ul li:hover {
+                background-color: #33334d;
+                border-radius: 6px;
+            }
+
+            .sidebar nav ul li i {
+                margin-right: 10px;
+                transition: color 0.2s;
+            }
+
+            .sidebar nav ul li.active i,
+            .sidebar nav ul li:hover i {
+                color: var(--card-blue);
+            }
