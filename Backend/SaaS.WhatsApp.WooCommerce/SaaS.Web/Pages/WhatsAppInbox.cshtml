@@ -1,0 +1,53 @@
+﻿@page
+@model SaaS.Web.Pages.WhatsAppInboxModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "WhatsApp Inbox";
+    ViewData["ActivePage"] = "WhatsAppInbox";
+    ViewData["PageStyle"] = "whatsappinbox.css";
+    ViewData["PageScript"] = "whatsappinbox.js";
+}
+<header class="topbar">
+    <h2>WhatsApp Inbox - @Model.ClientName</h2>
+    <div class="user-info">
+        <input type="text" id="searchWhatsAppInbox" placeholder="Search messages..." />
+    </div>
+</header>
+
+@if (Model.Messages == null)
+{
+    <p>Loading...</p>
+}
+else if (!Model.Messages.Any())
+{
+    <p>No messages found.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Message ID</th>
+                <th>Sender</th>
+                <th>Message</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody id="whatsappInboxTableBody">
+            @foreach (var message in Model.Messages)
+            {
+                <tr>
+                    <td>@message.Id</td>
+                    <td>@message.Sender</td>
+                    <td>@message.Content</td>
+                    <td>@message.Time.ToString("HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p class="error-message">@Model.ErrorMessage</p>
+}

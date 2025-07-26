@@ -1,0 +1,57 @@
+﻿@page
+@model SaaS.Web.Pages.ReportsModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Reports";
+    ViewData["ActivePage"] = "Reports";
+    ViewData["PageStyle"] = "reports.css";
+    ViewData["PageScript"] = "reports.js";
+}
+<header class="topbar">
+    <h2>Reports - @Model.ClientName</h2>
+    <div class="user-info">
+        <input type="text" id="searchReports" placeholder="Search reports..." />
+    </div>
+</header>
+
+@if (Model.Reports == null)
+{
+    <p>Loading...</p>
+}
+else if (!Model.Reports.Any())
+{
+    <p>No reports found.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Report ID</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="reportsTableBody">
+            @foreach (var report in Model.Reports)
+            {
+                <tr>
+                    <td>@report.Id</td>
+                    <td>@report.Title</td>
+                    <td>@report.Date.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <span class="badge @(report.Status == "Pending" ? "pending" : "completed")">
+                            @report.Status
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p class="error-message">@Model.ErrorMessage</p>
+}
